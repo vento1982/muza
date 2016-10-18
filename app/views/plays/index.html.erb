@@ -1,1 +1,9 @@
-<h1>Index site</h1>
+<div class="col-md-10 col-md-offset-1">
+	<h1>All Plays in Muza</h1>
+	<% @plays.each do |play| %>
+		<h2><%= link_to play.title, play_path(play) %></h2>
+		<p class="text-justify"><%= play.description %></p>
+		<p>Director: <%= play.director %></p>
+	<% end %>
+	<%= link_to "Add play", new_play_path, class: "btn btn-primary" %>
+</div>
