@@ -2,4 +2,9 @@
 	<h2><%= @play.title %></h2>
 	<h3>Director: <%= @play.director %></h3>
 	<p class="text-justify"><%= @play.description %></p>
+	<div class="btn-group">
+		<%= link_to "Back", root_path, class: "btn btn-default btn-xs" %>
+		<%= link_to "Edit", edit_play_path(@play), class: "btn btn-primary btn-xs" %>
+		<%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are You sure ?" }, class: "btn btn-danger btn-xs" %>
+	</div>
 </div>
