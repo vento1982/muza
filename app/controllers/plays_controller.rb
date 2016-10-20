@@ -10,6 +10,8 @@ class PlaysController < ApplicationController
 
 	def new
 		@play = current_user.plays.build
+		@categories = Category.all.map{ |c| [c.name, c.id]}
+
 	end
 
 	def create
@@ -22,6 +24,7 @@ class PlaysController < ApplicationController
 	end
 
 	def edit
+		@categories = Category.all.map{|c| [c.name, c.id]}
 	end
 
 	def update
@@ -40,7 +43,7 @@ class PlaysController < ApplicationController
 	private
 
 	def play_params
-		params.require(:play).permit(:title, :description, :director)
+		params.require(:play).permit(:title, :description, :director, :category_id)
 	end
 
 	def find_play
