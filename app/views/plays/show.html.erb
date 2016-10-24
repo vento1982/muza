@@ -1,18 +1,27 @@
-<div class="col-md-10 col-md-offset-1">
-	<h2><%= @play.title %></h2>
-	<h3>Director: <%= @play.director %></h3>
-	<% if @play.category_id.blank? %>
-		<h4>Nie przypisano kategori</h4>
-	<% else %>
-		<h4><%= @play.category.name  %></h4>
-	<% end %>
-	<p class="text-justify"><%= @play.description %></p>
-	<div class="links btn-group">
-		<% if user_signed_in? %>
-			<% if current_user.id == @play.user_id %>
-				<%= link_to "Edit", edit_play_path(@play), class: "btn btn-primary btn-xs" %>
-				<%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are You sure ?" }, class: "btn btn-danger btn-xs" %>
-			<% end %>
+<div class="row">
+	<div class="col-md-4">
+		<p><%= image_tag @play.play_img.url(:play_show), class: "play-show" %></p>
+	</div>
+	<div class="col-md-8">
+		<h2><%= @play.title %></h2>
+		<h3><span>From:</span><%= @play.director %></h3>
+		
+		<% if @play.category_id.blank? %>
+			<h4>Nie przypisano kategori</h4>
+		<% else %>
+			<h4><span>Category: </span><%= @play.category.name  %></h4>
 		<% end %>
+		
+			<p class="text-justify"><%= @play.description %></p>
+		
+		
+		<div class="links btn-group">
+			<% if user_signed_in? %>
+				<% if current_user.id == @play.user_id %>
+					<%= link_to "Edit", edit_play_path(@play), class: "btn btn-primary btn-xs" %>
+					<%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are You sure ?" }, class: "btn btn-danger btn-xs" %>
+				<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>
