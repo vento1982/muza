@@ -1,7 +1,11 @@
 <div class="col-md-10 col-md-offset-1">
 	<h2><%= @play.title %></h2>
 	<h3>Director: <%= @play.director %></h3>
-	<h4><%= @play.category.name %></h4>
+	<% if @play.category_id.blank? %>
+		<h4>Nie przypisano kategori</h4>
+	<% else %>
+		<h4><%= @play.category.name  %></h4>
+	<% end %>
 	<p class="text-justify"><%= @play.description %></p>
 	<div class="links btn-group">
 		<% if user_signed_in? %>
