@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-before_action :find_play, only: [:new, :create]
+before_action :find_play, only: [:new, :create, :show]
 
 def new
 	@review = Review.new
@@ -21,7 +21,7 @@ end
  private
 
  def review_params
- 	params.require(:review).permit(:raiting, :comment)
+ 	params.require(:review).permit(:rating, :comment)
  end
 
  def find_play

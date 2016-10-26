@@ -12,10 +12,26 @@
 			<h4><span>Category: </span><%= @play.category.name  %></h4>
 		<% end %>
 		
-			<p class="text-justify"><%= @play.description %></p>
+		<p class="text-justify"><%= @play.description %></p>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="add-review">
+					<h3>Add Reviews</h3>
+					<%= render 'reviews/form' %>
+				</div>
+			</div>
+			<div class="col-md-10 col-md-1">
+				<div class="reviews">
+					<h1>Reviews</h1>
+					<%= render @play.reviews %>
+				</div>
+			</div>
+		</div>
+			
 		
-		
-		<div class="links btn-group">
+	</div>
+</div>
+<div class="links btn-group">
 			<% if user_signed_in? %>
 				<% if current_user.id == @play.user_id %>
 					<%= link_to "Edit", edit_play_path(@play), class: "btn btn-primary btn-xs" %>
@@ -23,5 +39,3 @@
 				<% end %>
 			<% end %>
 		</div>
-	</div>
-</div>
