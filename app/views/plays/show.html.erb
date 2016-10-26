@@ -11,7 +11,9 @@
 		<% else %>
 			<h4><span>Category: </span><%= @play.category.name  %></h4>
 		<% end %>
-		
+		<h4 class="avg-rating">Average rating</h4>
+		<div class="average-review-rating" data-score="<%= @average_review %>"></div>
+		<span class="number-of-reviews"><em>From: </em><%= @play.reviews.count %> reviews</span>
 		<p class="text-justify"><%= @play.description %></p>
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
@@ -26,9 +28,7 @@
 					<%= render @play.reviews %>
 				</div>
 			</div>
-		</div>
-			
-		
+		</div>	
 	</div>
 </div>
 <div class="links btn-group">
@@ -48,5 +48,15 @@
 		},
 		path: '/assets/'
 
+	});
+</script>
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		score: function(){
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
 	});
 </script>
