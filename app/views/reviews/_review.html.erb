@@ -1,6 +1,6 @@
 <div class="review">
-	<p><%= review.comment %></p>
-	<p class="review-comment"><%= review.rating %></p>
+	<div class="review-rating" data-score="<%= review.rating %>"></div>
+	<p class="review-comment"><%= review.comment %></p>
 </div>
 <div class='links btn-group'>
 <% if user_signed_in? %>

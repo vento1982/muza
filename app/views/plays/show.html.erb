@@ -32,10 +32,21 @@
 	</div>
 </div>
 <div class="links btn-group">
-			<% if user_signed_in? %>
-				<% if current_user.id == @play.user_id %>
-					<%= link_to "Edit", edit_play_path(@play), class: "btn btn-primary btn-xs" %>
-					<%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are You sure ?" }, class: "btn btn-danger btn-xs" %>
-				<% end %>
-			<% end %>
-		</div>
+	<% if user_signed_in? %>
+		<% if current_user.id == @play.user_id %>
+			<%= link_to "Edit", edit_play_path(@play), class: "btn btn-primary btn-xs" %>
+			<%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are You sure ?" }, class: "btn btn-danger btn-xs" %>
+		<% end %>
+	<% end %>
+</div>
+
+<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function(){
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+
+	});
+</script>
