@@ -11,6 +11,7 @@ class PlaysController < ApplicationController
 	end
 
 	def show
+		
 	end
 
 	def new
