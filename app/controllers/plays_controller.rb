@@ -30,6 +30,7 @@ class PlaysController < ApplicationController
 		
 		if @play.save
 			redirect_to root_path
+			flash[:notice] = "Your Play have been added successful !"
 		else
 			render 'new'
 		end
@@ -44,6 +45,7 @@ class PlaysController < ApplicationController
 
 		if @play.update(play_params)
 			redirect_to play_path(@play)
+			flash[:notice] = "Your play have been update successful !"
 		else
 			render 'edit'
 		end

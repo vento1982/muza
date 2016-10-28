@@ -15,6 +15,7 @@ def create
 
 	if @review.save
 		redirect_to play_path(@play)
+		flash[:notice] = "Your comment have been added successful !"
 	else
 		render 'new'
 	end

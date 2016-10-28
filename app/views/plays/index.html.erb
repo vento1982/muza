@@ -16,6 +16,8 @@
 					<% end %>
 				</div>
 		<% end %>
+		<% if user_signed_in? %>
 		<%= link_to "Add play", new_play_path, class: "btn btn-primary" %>
+		<% end %>
 </div>
 </div>
