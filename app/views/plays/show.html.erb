@@ -3,26 +3,37 @@
 		<p><%= image_tag @play.play_img.url(:play_show), class: "play-show" %></p>
 	</div>
 	<div class="col-md-8">
-		<h2><%= @play.title %></h2>
-		<h3><span>From:</span><%= @play.director %></h3>
-		
-		<% if @play.category_id.blank? %>
-			<h4>Nie przypisano kategori</h4>
-		<% else %>
-			<h4><span>Category: </span><%= @play.category.name  %></h4>
-		<% end %>
-		<h4 class="avg-rating">Average rating</h4>
-		<div class="average-review-rating" data-score="<%= @average_review %>"></div>
-		<span class="number-of-reviews"><em>From: </em><%= @play.reviews.count %> reviews</span>
-		<p class="text-justify"><%= @play.description %></p>
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="add-review">
-					<h3>Add Reviews</h3>
-					<%= render 'reviews/form' %>
-				</div>
+		<div class="play-info">
+			<h2 class="play-title"><%= @play.title %></h2>
+			<h3 class="play-director"><span>From:</span><%= @play.director %></h3>
+			
+			<% if @play.category_id.blank? %>
+				<h4 class="play-category">Nie przypisano kategori</h4>
+			<% else %>
+				<h4 class="play-category"><span>Category: </span><%= @play.category.name  %></h4>
+			<% end %>
+			<h4 class="avg-rating">Average rating</h4>
+			<div class="average-review-rating" data-score="<%= @average_review %>"></div>
+			<span class="number-of-reviews"><em>From: </em><%= @play.reviews.count %> reviews</span>
+			<p class="text-justify play-dsc"><%= @play.description %></p>
+			<div class="links btn-group">
+				<% if user_signed_in? %>
+					<% if current_user.id == @play.user_id %>
+						<%= link_to "Edit", edit_play_path(@play), class: "btn btn-primary btn-xs" %>
+						<%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are You sure ?" }, class: "btn btn-danger btn-xs" %>
+					<% end %>
+				<% end %>
 			</div>
-			<div class="col-md-10 col-md-1">
+
+			</div>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="add-review">
+						<h3>Add Reviews</h3>
+						<%= render 'reviews/form' %>
+					</div>
+		</div>
+			<div class="col-md-10 col-md-offset-1">
 				<div class="reviews">
 					<h1>Reviews</h1>
 					<%= render @play.reviews %>
@@ -31,14 +42,7 @@
 		</div>	
 	</div>
 </div>
-<div class="links btn-group">
-	<% if user_signed_in? %>
-		<% if current_user.id == @play.user_id %>
-			<%= link_to "Edit", edit_play_path(@play), class: "btn btn-primary btn-xs" %>
-			<%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are You sure ?" }, class: "btn btn-danger btn-xs" %>
-		<% end %>
-	<% end %>
-</div>
+
 
 <script>
 	$('.review-rating').raty({

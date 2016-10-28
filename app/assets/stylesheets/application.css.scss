@@ -16,12 +16,203 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Veriables, mixins, etc.. */
+@mixin background-tile{
+	box-sizing: border-box;
+	background-color: rgba(0,0,0, .3);
+	box-shadow: 1px 1px 2px 2px #000;
+	padding: 0.5em 0.5em;
+	color:#ccc;
+		.form-control{
+			background-color: rgba(0,0,0,.5);
+			color: #ccc;
+			border-color: #000;
+		}
+}
+
+/* General Styles */
+
+body{
+	background-color: #666;
+	background: -webkit-radial-gradient(#666, #000);
+	background: -o-radial-gradient(#666, #000);
+	background: -moz-radial-gradient(#666, #000);
+	background: radial-gradient(#666, #000);
+
+}
+
+h1, h2, h3, h4, h5, h6{
+	color: #ccc;
+}
+
+p.alert, p.notice{
+	margin:0;
+}
+
+/* Navbar styles */
+.navbar{
+	text-transform: uppercase;
+}
+.navbar-default{
+	background-color: #fff;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+	.navbar-nav > li > a{
+		color: #222;
+		transition: 0.5s;
+		&:hover {
+			color: darken(#bdbdbd, 5%);
+			transition: 0.5s;
+		}
+	}
+}
+
+/* Signup/Login form */
+
+.signup-form{
+	@include background-tile;
+
+	h2{
+		font-weight: bold;
+	}
+}
+
+.login-form{
+	@include background-tile;
+
+	h2{
+		font-weight:bold;
+	}
+}
+
+/* Add/edit play form */
+
+.new-play-form, .edit-play-form{
+	@include background-tile;
+
+	h1{
+		font-weight: bold;
+	}
+
+	#category_id{
+		margin-bottom:10px;
+	}
+
+	#play_play_img{
+		margin-bottom:10px;
+	}
+}
+
+/* Play Styles */
+
 .play{
+	@include background-tile;
+
+	margin:15px 0;
 	height: 350px;
 	width: 250px;
 }
 
 .play-show{
+	@include background-tile;
+
 	width: 325px;
 	height: 475px;
+}
+
+.play-info{
+	@include background-tile;
+
+	.play-title{
+		margin-top:0;
+		font-size: 4em;
+		font-weight: bold;
+	}
+
+	.play-director{
+		font-size:1.5em;
+		margin-top:10px;
+		margin-bottom:10px;
+		font-style:italic;
+		font-weight: lighter;
+
+		span{
+			font-size: 0.8em;
+		}
+	}
+
+	.play-category{
+		font-weight: bold;
+
+		span{
+			font-weight: lighter;
+			font-size: 0.9em;
+		}
+	}
+
+	.avg-rating{
+		font-size: 1.5em;
+		margin-top: 35px;
+		margin-bottom: 5px;
+		font-weight: bold;
+	}
+
+	.number-of-reviews{
+		font-size: 0.85em;
+		font-style: italic;
+	}
+
+	.play-dsc{
+		font-size:1.05em;
+		line-height: 1.5;
+		margin-top:15px;
+		margin-bottom: 15px;
+	}
+}
+
+.play-info{
+	@include background-tile;
+}
+
+/* Review styles */
+
+.reviews{
+	@include background-tile;
+	margin-top: 40px;
+
+	h1{
+		margin-top: 0;
+		margin-bottom: 15px;
+		font-size: 2em;
+		font-weight: bold;
+	}
+	.review{
+		margin-top:10px;
+		padding: 20px;
+		background: rgba(0,0,0,.3);
+	}
+	.review-rating{
+
+	}
+	.review-comment{
+		font-size:1.05em;
+		line-height: 1.5;
+	}
+}
+.add-review{
+	padding-top:8px;
+
+	h3{
+		font-weight:bold;
+		color: #fff;
+	}
+	#rating-form{
+		color: #fff;
+		font-weight: lighter;
+		font-size: 0.8em;
+	}
+	.control-label{
+		color: #fff;
+	}
 }
